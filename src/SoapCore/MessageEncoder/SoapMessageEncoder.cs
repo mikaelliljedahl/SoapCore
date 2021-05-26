@@ -67,8 +67,9 @@ namespace SoapCore.MessageEncoder
 		{
 			if (contentType == null)
 			{
-				throw new ArgumentNullException(nameof(contentType));
+				return true; // throw new ArgumentNullException(nameof(contentType));
 			}
+
 
 			if (IsContentTypeSupported(contentType, ContentType, MediaType))
 			{

@@ -354,6 +354,10 @@ namespace SoapCore
 						operation, responseObject, resultOutDictionary, soapAction, requestMessage, messageEncoder);
 
 					httpContext.Response.ContentType = httpContext.Request.ContentType;
+
+					if (httpContext.Request.ContentType == null)
+						httpContext.Response.ContentType = "application/xml";
+
 					httpContext.Response.Headers["SOAPAction"] = responseMessage.Headers.Action;
 
 					correlationObjects2.ForEach(mi => mi.inspector.BeforeSendReply(ref responseMessage, _service, mi.correlationObject));
